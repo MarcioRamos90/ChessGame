@@ -17,6 +17,17 @@ class Piece():
 
 class Board():
     white = 'white'
+    black = 'black'
+
+    __init_p1_board = [
+        ('P', '2a'),('P', '2b'),('P', '2c'),('P', '2d'),('P', '2e'),('P', '2f'),('P', '2g'),('P', '2h'),
+        ('T', '1a'),('C', '1b'),('B', '1c'),('Q', '1d'),('K', '1e'),('B', '1f'),('C', '1g'),('T', '1h'),
+    ]
+
+    __init_p2_board = [
+        ('P', '7a'),('P', '7b'),('P', '7c'),('P', '7d'),('P', '7e'),('P', '7f'),('P', '7g'),('P', '7h'),
+        ('T', '8a'),('C', '8b'),('B', '8c'),('Q', '8d'),('K', '8e'),('B', '8f'),('C', '8g'),('T', '8h'),
+    ]
 
     def __init__(self):
         '''
@@ -37,42 +48,11 @@ class Board():
         self.height = 8
         self.board = [[None for _ in range(self.length)] for _ in range(self.height)]
 
-        self.setP(Piece('P', self.white), '2a')
-        self.setP(Piece('P', self.white), '2b')
-        self.setP(Piece('P', self.white), '2c')
-        self.setP(Piece('P', self.white), '2d')
-        self.setP(Piece('P', self.white), '2e')
-        self.setP(Piece('P', self.white), '2f')
-        self.setP(Piece('P', self.white), '2g')
-        self.setP(Piece('P', self.white), '2h')
-
-        self.setP(Piece('T', self.white), '1a')
-        self.setP(Piece('C', self.white), '1b')
-        self.setP(Piece('B', self.white), '1c')
-        self.setP(Piece('Q', self.white), '1d')
-        self.setP(Piece('K', self.white), '1e')
-        self.setP(Piece('B', self.white), '1f')
-        self.setP(Piece('C', self.white), '1g')
-        self.setP(Piece('T', self.white), '1h')
-
-        self.setP(Piece('P', self.white), '7a')
-        self.setP(Piece('P', self.white), '7b')
-        self.setP(Piece('P', self.white), '7c')
-        self.setP(Piece('P', self.white), '7d')
-        self.setP(Piece('P', self.white), '7e')
-        self.setP(Piece('P', self.white), '7f')
-        self.setP(Piece('P', self.white), '7g')
-        self.setP(Piece('P', self.white), '7h')
-
-        self.setP(Piece('T', self.white), '8a')
-        self.setP(Piece('C', self.white), '8b')
-        self.setP(Piece('B', self.white), '8c')
-        self.setP(Piece('Q', self.white), '8d')
-        self.setP(Piece('K', self.white), '8e')
-        self.setP(Piece('B', self.white), '8f')
-        self.setP(Piece('C', self.white), '8g')
-        self.setP(Piece('T', self.white), '8h')
-
+        for piece, cord in self.__init_p1_board:
+            self.setP(Piece(piece, self.white), cord)
+        
+        for piece, cord in self.__init_p2_board:
+            self.setP(Piece(piece, self.black), cord)
 
     def setP(self, piece: Piece, cord: str):
         cordsTranlated = self.__getTranslateCords(cord)
