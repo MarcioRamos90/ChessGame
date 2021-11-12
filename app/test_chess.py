@@ -1,4 +1,14 @@
-from main import Board, Piece
+from chess import Board, Piece, Game
+
+
+def testGameStart(capsys):
+    game = Game()
+    game.start()
+    captured = capsys.readouterr()
+
+    assert '1 [T][C][B][Q][K][B][C][T]' in captured.out
+    assert '8 [T][C][B][Q][K][B][C][T]' in captured.out
+    assert '\njogador 1: qual peça deseja mover?: ' in captured.out
 
 
 def testBoard():
